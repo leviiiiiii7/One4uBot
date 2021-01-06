@@ -58,12 +58,12 @@ async def capture(url):
         message_id = url.reply_to_msg_id
     with io.BytesIO(im_png) as out_file:
         out_file.name = "screencapture.png"
-        await url.edit("`Uploading screenshot as file..`")
+        await url.edit("`Uploading screenshot..`")
         await url.client.send_file(
             url.chat_id,
             out_file,
             caption=input_str,
-            force_document=True,
+            force_document=False,
             reply_to=message_id,
         )
         await url.delete()
