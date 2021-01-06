@@ -46,21 +46,20 @@ from userbot.events import register
 from userbot.utils import chrome, googleimagesdownload, progress
 
 CARBONLANG = "auto"
-TTS_LANG = "en"
-TRT_LANG = "en"
+TTS_LANG = "id"
+TRT_LANG = "id"
 
 
-@register(outgoing=True, pattern="^.crblang (.*)")
+@register(outgoing=True, pattern=r"^\.crblang (.*)")
 async def setlang(prog):
     global CARBONLANG
     CARBONLANG = prog.pattern_match.group(1)
     await prog.edit(f"Language for carbon.now.sh set to {CARBONLANG}")
 
 
-@register(outgoing=True, pattern="^.carbon")
+@register(outgoing=True, pattern=r"^\.carbon")
 async def carbon_api(e):
-    """ A Wrapper for carbon.now.sh """
-    await e.edit("`Processing..`")
+    await e.edit("`Processing...`")
     CARBON = "https://carbon.now.sh/?l={lang}&code={code}"
     global CARBONLANG
     textx = await e.get_reply_message()
@@ -77,17 +76,7 @@ async def carbon_api(e):
     url = CARBON.format(code=code, lang=CARBONLANG)
     driver = await chrome()
     driver.get(url)
-    await e.edit("`Processing..\n50%`")
-    download_path = "./"
-    driver.command_executor._commands["send_command"] = (
-        "POST",
-        "/session/$sessionId/chromium/send_command",
-    )
-    params = {
-        "cmd": "Page.setDownloadBehavior",
-        "params": {"behavior": "allow", "downloadPath": download_path},
-    }
-    driver.execute("send_command", params)
+    await e.edit("`Processing...\n50%`")
     driver.find_element_by_xpath("//button[@id='export-menu']").click()
     driver.find_element_by_xpath("//button[contains(text(),'4x')]").click()
     driver.find_element_by_xpath("//button[contains(text(),'PNG')]").click()
@@ -99,10 +88,12 @@ async def carbon_api(e):
     await e.edit("`Uploading...`")
     await e.client.send_file(
         e.chat_id,
-        file,
-        caption="Made using [Carbon](https://carbon.now.sh/about/),\
-        \na project by [Dawn Labs](https://dawnlabs.io/)",
-        force_document=True,
+        file_path,
+        caption=(
+            "Made using [Carbon](https://carbon.now.sh/about/),"
+            "\na project by [Dawn Labs](https://dawnlabs.io/)"
+        ),
+        force_document=False,
         reply_to=e.message.reply_to_msg_id,
     )
 
@@ -110,6 +101,37 @@ async def carbon_api(e):
     driver.quit()
     # Removing carbon.png after uploading
     await e.delete()  # Deleting msg
+
+
+@register(outgoing=True, pattern=r"^\.img (.*)")
+async def img_sampler(event):
+    await event.edit("`Processing...`")
+    query = event.pattern_match.group(1)
+    lim = findall(r"lim=\d+", query)
+    try:
+        lim = lim[0]
+        lim = lim.replace("lim=", "")
+        query = query.replace("lim=" + lim[0], "")
+    except IndexError:
+        lim = IMG_LIMIT
+    response = googleimagesdownload()
+
+    # creating list of arguments
+    arguments = {
+        "keywords": query,
+        "limit": lim,
+        "format": "jpg",
+        "no_directory": "no_directory",
+    }
+
+    # passing the arguments to the function
+    paths = response.download(arguments)
+    lst = paths[0][query]
+    await event.client.send_file(
+        await event.client.get_input_entity(event.chat_id), lst
+    )
+    shutil.rmtree(os.path.dirname(os.path.abspath(lst[0])))
+    await event.delete()
 
 
 @register(outgoing=True, pattern="^.img (.*)")
