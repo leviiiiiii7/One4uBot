@@ -7,7 +7,7 @@ from userbot.events import register
 
 @register(outgoing=True, pattern="^.detect (.*)")
 async def detect(event):
-    if Config.DEEP_AI is None:
+    if DEEP_AI is None:
         return await edit_delete(
             event, "Add VAR `DEEP_AI` get Api Key from https://deepai.org/", 5
         )
@@ -28,7 +28,7 @@ async def detect(event):
         files={
             "image": open(media, "rb"),
         },
-        headers={"api-key": Config.DEEP_AI},
+        headers={"api-key": DEEP_AI},
     )
     os.remove(media)
     if "status" in r.json():
