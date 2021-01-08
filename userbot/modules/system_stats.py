@@ -234,7 +234,7 @@ async def amireallyalive(alive):
         f"•  ⚙️ `Telethon       : v{version.__version__} `\n"
         f"•  🐍 `Python         : v{python_version()} `\n"
         f"•  👤 `User           :`  {DEFAULTUSER} \n"
-        "`----------------------------------`\n"
+        "`⊷⊷⊷⊷⊷⊷⊷⊷⊷⊷⊶⊷⊶⊶⊶⊶⊶⊶⊶⊶⊶⊶`\n"
         f"•  💻 `Running on     : {repo.active_branch.name} `\n"
         f"•  🗃 `Loaded modules : {len(modules)} `\n"
         f"•  🧸 `One4uBot       : v{USERBOT_VERSION} `\n"
