@@ -37,7 +37,7 @@ KANGING_STR = [
 ]
 
 
-@register(outgoing=True, pattern="^.kang")
+@register(outgoing=True, pattern=r"^.(kang|nyomot)$")
 async def kang(args):
     """ For .kang command, kangs stickers or creates new ones. """
     user = await bot.get_me()
@@ -253,8 +253,8 @@ async def kang(args):
                 await bot.send_read_acknowledge(conv.chat_id)
 
         await args.edit(
-            f"`Sticker kanged successfully!`\
-            \nPack can be found [here](t.me/addstickers/{packname})",
+            f"`Yahayukk, Sticker berhasil comot!`\
+            \nAmbil disini [here](t.me/addstickers/{packname})",
             parse_mode="md",
         )
 
@@ -364,7 +364,7 @@ async def sticker_to_png(sticker):
 CMD_HELP.update(
     {
         "stickers": ".kang\
-\nUsage: Reply .kang to a sticker or an image to kang it to your userbot pack.\
+\nUsage: Reply .kang or nyomot to a sticker or an image to kang it to your userbot pack.\
 \n\n.kang [emoji('s)]\
 \nUsage: Works just like .kang but uses the emoji('s) you picked.\
 \n\n.kang [number]\
