@@ -31,13 +31,13 @@ async def speedtst(spd):
         "`"
         "Started at "
         f"{result['timestamp']} \n\n"
-        "Download "
-        f"{speed_convert(result['download'])} \n"
-        "Upload "
+        "🔼 UPLOAD "
         f"{speed_convert(result['upload'])} \n"
-        "Ping "
-        f"{result['ping']} \n"
-        "ISP "
+        "🔽 Download "
+        f"{speed_convert(result['download'])} \n"
+        "📶 Ping "
+        f"{result['ping']} ms \n"
+        "🖥️ ISP "
         f"{result['client']['isp']}"
         "`"
     )
@@ -61,9 +61,9 @@ async def neardc(event):
     """ For .dc command, get the nearest datacenter information. """
     result = await event.client(functions.help.GetNearestDcRequest())
     await event.edit(
-        f"Country : `{result.country}`\n"
-        f"Nearest Datacenter : `{result.nearest_dc}`\n"
-        f"This Datacenter : `{result.this_dc}`"
+        f"🏳‍🌈 Negara : `{result.country}`\n"
+        f"Data Center Terdekat : `{result.nearest_dc}`\n"
+        f"Data Center Pengguna : `{result.this_dc}`"
     )
 
 
@@ -74,7 +74,7 @@ async def pingme(pong):
     await pong.edit("`Pong!`")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
-    await pong.edit("`Pong!\n%sms`" % (duration))
+    await pong.edit("`█▀█ █▀█ █▄░█ █▀▀ █ \n█▀▀ █▄█ █░▀█ █▄█ ▄\n%sms`" % (duration))
 
 
 CMD_HELP.update(
