@@ -27,7 +27,7 @@ DEF_UNAPPROVED_MSG = (
     "Please wait for me to look in.\n"
     "Until then, please don't spam my PM...\n"
     "Thank you for being patient.\n\n"
-    "*This is an automated message.\n\n\n\n\n\n\n\n\n\n\nPlease Dont Spam, or u Got Banned"
+    "*This is an automated message.\nPlease Dont Spam, or you got Banned\n\n███████▄▄███████████▄  \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓███░░░░░░░░░░░░█\n██████▀▀▀█░░░░██████▀  \n░░░░░░░░░█░░░░█  \n░░░░░░░░░░█░░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░░▀▀"
 )
 # =================================================================
 
