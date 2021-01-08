@@ -1,7 +1,7 @@
 import os
 
 import requests
-from userbot import CMD_HELP
+from userbot import CMD_HELP, DEEP_AI
 from userbot.events import register
 
 
