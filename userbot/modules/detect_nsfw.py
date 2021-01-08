@@ -5,7 +5,7 @@ from userbot import CMD_HELP, DEEP_AI
 from userbot.events import register
 
 
-@register(outgoing=True, pattern="^.detect (.*)")
+@register(pattern=".detect(?: |$)(.*)", outgoing=True)
 async def detect(event):
     if DEEP_AI is None:
         return await edit_delete(
