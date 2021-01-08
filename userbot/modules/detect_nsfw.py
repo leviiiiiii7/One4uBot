@@ -4,6 +4,7 @@ import requests
 from userbot import CMD_HELP, DEEP_AI
 from userbot.events import register
 
+DEEP_AI = DEEP_AI
 
 @register(pattern=".detect(?: |$)(.*)", outgoing=True)
 async def detect(event):
