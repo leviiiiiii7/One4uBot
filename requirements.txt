@@ -47,6 +47,7 @@ requests
 search-engine-parser
 speedtest-cli
 sqlalchemy
+selenium
 TgCrypto
 telethon
 telethon-session-sqlalchemy
