@@ -6,7 +6,7 @@ WORKDIR /One4uBot
 
 RUN git clone https://github.com/4amparaboy/One4uBot -b sql-extended /One4uBot
 RUN mkdir /4amparaboy && chmod 777 /4amparaboy
-pip install faker --no-cache-dir
+RUN pip install faker --no-cache-dir
 #
 # Copies session and config(if it exists)
 #
