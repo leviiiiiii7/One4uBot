@@ -10,6 +10,7 @@ cryptg
 dnspython
 deezloader
 emoji
+faker
 gitpython
 glitch_this
 google-api-python-client
